@@ -49,9 +49,9 @@ export default function Contact() {
           className="flex items-center justify-center gap-4 mt-10"
         >
           {[
-            { icon: Github, href: "https://github.com", label: "GitHub" },
-            { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-            { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+            { icon: Github, href: "https://github.com/m-skaan", label: "GitHub" },
+            { icon: Linkedin, href: "https://linkedin.com/mskaan", label: "LinkedIn" },
+            { icon: Twitter, href: "https://twitter.com/musk2an", label: "Twitter" },
           ].map(({ icon: Icon, href, label }) => (
             <a
               key={label}
