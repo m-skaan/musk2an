@@ -19,10 +19,10 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-zinc-950/70 border-b border-zinc-800/50"
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-zinc-950/78 border-b border-zinc-700/60"
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="text-xl font-bold tracking-tight">
+        <a href="#" className="text-xl font-bold tracking-tight text-orange-600">
           <span className="gradient-text">m.</span>
         </a>
 
@@ -32,7 +32,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-zinc-400 hover:text-orange-400 transition-colors duration-200"
+                className="text-sm text-orange-600 hover:text-orange-300 transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -41,7 +41,7 @@ export default function Navbar() {
           <li>
             <a
               href="#contact"
-              className="text-sm px-4 py-2 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 hover:bg-orange-500/20 transition-all duration-200"
+              className="text-sm px-4 py-2 rounded-full bg-orange-500/12 text-orange-600 border border-orange-500/35 hover:bg-orange-500/22 transition-all duration-200"
             >
               Get in Touch
             </a>
@@ -51,7 +51,7 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-zinc-400 hover:text-orange-400 transition-colors"
+          className="md:hidden text-orange-600 hover:text-orange-300 transition-colors"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -63,7 +63,7 @@ export default function Navbar() {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden border-t border-zinc-800/50 bg-zinc-950/90 backdrop-blur-xl"
+          className="md:hidden border-t border-zinc-700/60 bg-zinc-950/92 backdrop-blur-xl"
         >
           <ul className="flex flex-col gap-1 px-6 py-4">
             {navLinks.map((link) => (
@@ -71,7 +71,7 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block py-2 text-sm text-zinc-400 hover:text-orange-400 transition-colors"
+                  className="block py-2 text-sm text-orange-600 hover:text-orange-300 transition-colors"
                 >
                   {link.label}
                 </a>

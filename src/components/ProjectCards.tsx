@@ -79,7 +79,7 @@ export default function ProjectCards() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-orange-400 font-mono text-sm tracking-widest uppercase mb-3">
+          <p className="text-orange-300 font-mono text-sm tracking-widest uppercase mb-3">
             What I&apos;ve been up to
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -97,17 +97,17 @@ export default function ProjectCards() {
               viewport={{ once: true }}
               variants={cardVariants}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group relative aspect-square flex flex-col justify-between p-7 rounded-2xl border border-zinc-800/80 bg-zinc-900/50 backdrop-blur-sm card-glow transition-all duration-300 hover:border-orange-500/30"
+              className="group relative aspect-square flex flex-col justify-between p-7 rounded-2xl border border-zinc-700/80 bg-zinc-900/60 backdrop-blur-sm card-glow transition-all duration-300 hover:border-orange-500/40"
             >
               {/* Top: icon + link */}
               <div className="flex items-start justify-between">
-                <div className="p-3 rounded-xl bg-orange-500/10 text-orange-400 group-hover:bg-orange-500/20 transition-colors duration-200">
+                <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300 group-hover:bg-orange-500/24 transition-colors duration-200">
                   {project.icon}
                 </div>
                 {project.link && (
                   <a
                     href={project.link}
-                    className="p-2 text-zinc-600 hover:text-orange-400 transition-colors"
+                    className="p-2 text-zinc-300 hover:text-orange-300 transition-colors"
                   >
                     <ExternalLink size={18} />
                   </a>
@@ -116,10 +116,10 @@ export default function ProjectCards() {
 
               {/* Middle: content */}
               <div className="flex-1 flex flex-col justify-center py-4">
-                <h3 className="text-xl font-semibold mb-3 text-zinc-100 group-hover:text-orange-400 transition-colors duration-200">
+                <h3 className="text-xl font-semibold mb-3 text-orange-600 group-hover:text-orange-300 transition-colors duration-200">
                   {project.title}
                 </h3>
-                <p className="text-sm text-zinc-500 leading-relaxed">
+                <p className="text-sm text-orange-600 leading-relaxed">
                   {project.description}
                 </p>
               </div>

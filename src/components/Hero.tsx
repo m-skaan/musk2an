@@ -22,7 +22,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <p className="text-orange-400 font-mono text-sm tracking-widest uppercase mb-4">
+          <p className="text-orange-600 font-mono text-sm font-semibold tracking-widest uppercase mb-4">
             Welcome to my corner of the internet
           </p>
         </motion.div>
@@ -41,9 +41,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-8 leading-relaxed"
+          className="text-lg md:text-xl text-orange-600 max-w-2xl mx-auto mb-8 leading-relaxed"
         >
-          I build things that live on the internet. Developer, researcher, and
+          👩🏽‍💻 Currently: SWE @ Bloomberg
+          I build things– mostly software. that live on the internet. Developer, researcher, and
           perpetual tinkerer — passionate about turning ideas into elegant,
           impactful software.
         </motion.p>
@@ -62,7 +63,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="px-6 py-3 rounded-full border border-zinc-700 text-zinc-300 font-semibold text-sm hover:border-orange-500/50 hover:text-orange-400 transition-all duration-200"
+            className="px-6 py-3 rounded-full border border-zinc-500 text-orange-600 font-semibold text-sm hover:border-orange-500/70 hover:text-orange-300 transition-all duration-200"
           >
             Say Hello
           </a>
@@ -84,7 +85,7 @@ export default function Hero() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full border border-zinc-800 text-zinc-500 hover:text-orange-400 hover:border-orange-500/30 transition-all duration-200"
+              className="p-3 rounded-full border border-zinc-600 text-orange-600 hover:text-orange-300 hover:border-orange-500/50 transition-all duration-200"
               aria-label={label}
             >
               <Icon size={20} />
@@ -104,7 +105,7 @@ export default function Hero() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <ArrowDown size={20} className="text-zinc-600" />
+          <ArrowDown size={20} className="text-orange-600" />
         </motion.div>
       </motion.div>
     </section>

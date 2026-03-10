@@ -15,13 +15,13 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-orange-400 font-mono text-sm tracking-widest uppercase mb-3">
+          <p className="text-orange-300 font-mono text-sm tracking-widest uppercase mb-3">
             Let&apos;s connect
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
             Get in <span className="gradient-text">Touch</span>
           </h2>
-          <p className="text-zinc-400 leading-relaxed mb-10">
+          <p className="text-orange-600 leading-relaxed mb-10">
             Have a project in mind, want to collaborate, or just want to say hi?
             I&apos;m always open to new opportunities and conversations.
           </p>
@@ -58,7 +58,7 @@ export default function Contact() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full border border-zinc-800 text-zinc-500 hover:text-orange-400 hover:border-orange-500/30 transition-all duration-200"
+              className="p-3 rounded-full border border-zinc-600 text-orange-600 hover:text-orange-300 hover:border-orange-500/50 transition-all duration-200"
               aria-label={label}
             >
               <Icon size={18} />

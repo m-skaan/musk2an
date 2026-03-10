@@ -34,7 +34,7 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-orange-400 font-mono text-sm tracking-widest uppercase mb-3">
+          <p className="text-orange-300 font-mono text-sm tracking-widest uppercase mb-3">
             Tools of the trade
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -50,18 +50,18 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-6 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 hover:border-orange-500/20 transition-all duration-300"
+              className="p-6 rounded-2xl border border-zinc-700/80 bg-zinc-900/55 hover:border-orange-500/35 transition-all duration-300"
             >
-              <h3 className="text-sm font-semibold text-orange-400 uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-orange-300 uppercase tracking-wider mb-4">
                 {cat.title}
               </h3>
               <ul className="space-y-2.5">
                 {cat.skills.map((skill) => (
                   <li
                     key={skill}
-                    className="flex items-center gap-2.5 text-sm text-zinc-400"
+                    className="flex items-center gap-2.5 text-sm text-orange-600"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500/60" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400/80" />
                     {skill}
                   </li>
                 ))}
