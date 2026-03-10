@@ -43,10 +43,12 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="text-lg md:text-xl text-orange-600 max-w-2xl mx-auto mb-8 leading-relaxed"
         >
-          👩🏽‍💻 Currently: SWE @ Bloomberg
-          I build things– mostly software. that live on the internet. Developer, researcher, and
-          perpetual tinkerer — passionate about turning ideas into elegant,
-          impactful software.
+          <span className="text-xl md:text-2xl font-semibold text-yellow-900">Software Engineer @ Bloomberg</span>
+          <br />
+          <span className="text-xl md:text-2xl font-semibold text-yellow-900">Georgia Tech CS Alum</span>
+          <br />
+          <br />
+          <span className="text-lg md:text-xl font-semibold">I build high-performance systems and create tools for taste-oriented tasks.</span>
         </motion.p>
 
         <motion.div
