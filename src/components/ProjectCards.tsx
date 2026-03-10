@@ -1,77 +1,135 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Folder, FlaskConical, Trophy } from "lucide-react";
+import { ExternalLink, TrendingUp, FlaskConical, Trophy, Folder, BookOpen } from "lucide-react";
 
-interface Project {
+interface ResearchItem {
   title: string;
   description: string;
+  link?: string;
   tags: string[];
-  icon: React.ReactNode;
+}
+
+interface HackathonWin {
+  title: string;
+  award: string;
+  year: string;
   link?: string;
 }
 
-const projects: Project[] = [
+interface PersonalProject {
+  title: string;
+  description: string;
+  tags: string[];
+  link?: string;
+}
+
+interface BlogPost {
+  title: string;
+  date: string;
+  excerpt: string;
+  link?: string;
+}
+
+const researchItems: ResearchItem[] = [
   {
-    title: "Personal Projects",
-    description:
-      "A collection of passion-driven builds — from full-stack web apps to CLI tools and creative experiments that scratch an itch.",
-    tags: ["Web App", "Open Source", "CLI", "AI/ML"],
-    icon: <Folder size={24} />,
+    title: "Research Project Title",
+    description: "Brief description of your research work, methodology, and findings.",
+    link: "#",
+    tags: ["ML", "NLP"],
+  },
+  {
+    title: "Another Research Project",
+    description: "Description of another research project or publication.",
+    link: "#",
+    tags: ["HCI", "Published"],
+  },
+];
+
+const hackathonWins: HackathonWin[] = [
+  {
+    title: "Hackathon Name",
+    award: "1st Place",
+    year: "2024",
     link: "#",
   },
   {
-    title: "Research",
-    description:
-      "Academic and independent research exploring the frontiers of machine learning, NLP, and human-computer interaction.",
-    tags: ["Machine Learning", "NLP", "HCI", "Published"],
-    icon: <FlaskConical size={24} />,
+    title: "Another Hackathon",
+    award: "Best Technical Implementation",
+    year: "2023",
+    link: "#",
+  },
+];
+
+const personalProjects: PersonalProject[] = [
+  {
+    title: "Project Name",
+    description: "Brief description of what this project does and the tech stack used.",
+    tags: ["React", "TypeScript"],
     link: "#",
   },
   {
-    title: "Hackathons",
-    description:
-      "48-hour sprints turning wild ideas into working prototypes. Thriving under pressure and building with brilliant people.",
-    tags: ["Winner", "Team Lead", "24hr Build", "Open Source"],
-    icon: <Trophy size={24} />,
+    title: "Another Project",
+    description: "Description of another personal project you've built.",
+    tags: ["Python", "ML"],
+    link: "#",
+  },
+  {
+    title: "Third Project",
+    description: "Yet another cool project you've worked on.",
+    tags: ["Go", "CLI"],
+    link: "#",
+  },
+];
+
+const blogPosts: BlogPost[] = [
+  {
+    title: "Blog Post Title",
+    date: "Mar 2026",
+    excerpt: "A brief excerpt or summary of your blog post content...",
+    link: "#",
+  },
+  {
+    title: "Another Post",
+    date: "Feb 2026",
+    excerpt: "Another interesting topic you've written about...",
     link: "#",
   },
 ];
 
 const tagColors: Record<string, string> = {
-  "Web App": "bg-orange-500/15 text-orange-300 border-orange-500/20",
-  "Open Source": "bg-emerald-500/15 text-emerald-300 border-emerald-500/20",
-  "CLI": "bg-violet-500/15 text-violet-300 border-violet-500/20",
-  "AI/ML": "bg-rose-500/15 text-rose-300 border-rose-500/20",
-  "Machine Learning": "bg-blue-500/15 text-blue-300 border-blue-500/20",
+  "React": "bg-blue-500/15 text-blue-300 border-blue-500/20",
+  "TypeScript": "bg-blue-500/15 text-blue-300 border-blue-500/20",
+  "Python": "bg-yellow-500/15 text-yellow-300 border-yellow-500/20",
+  "ML": "bg-purple-500/15 text-purple-300 border-purple-500/20",
   "NLP": "bg-cyan-500/15 text-cyan-300 border-cyan-500/20",
   "HCI": "bg-amber-500/15 text-amber-300 border-amber-500/20",
   "Published": "bg-pink-500/15 text-pink-300 border-pink-500/20",
-  "Winner": "bg-yellow-500/15 text-yellow-300 border-yellow-500/20",
-  "Team Lead": "bg-indigo-500/15 text-indigo-300 border-indigo-500/20",
-  "24hr Build": "bg-red-500/15 text-red-300 border-red-500/20",
+  "Go": "bg-cyan-500/15 text-cyan-300 border-cyan-500/20",
+  "CLI": "bg-violet-500/15 text-violet-300 border-violet-500/20",
 };
 
 function getTagColor(tag: string) {
   return tagColors[tag] || "bg-orange-500/15 text-orange-300 border-orange-500/20";
 }
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.15, ease: "easeOut" as const },
-  }),
-};
-
 export default function ProjectCards() {
+  const [activeTab, setActiveTab] = useState("bloomberg");
+
+  const tabs = [
+    { id: "bloomberg", label: "Bloomberg"},
+    { id: "caltech", label: "Caltech"},
+    { id: "new relic", label: "New Relic"},
+    { id: "tutoring", label: "Tutoring"},
+  ];
+
   return (
     <section id="projects" className="relative py-28 px-6">
-      {/* Section divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-px orange-line" />
 
       <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -79,67 +137,273 @@ export default function ProjectCards() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-orange-300 font-mono text-sm tracking-widest uppercase mb-3">
+          <p className="text-orange-600 font-mono text-sm tracking-widest uppercase mb-3">
             What I&apos;ve been up to
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Featured <span className="gradient-text">Work</span>
+            Work <span className="gradient-text">Experience</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.title}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={cardVariants}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group relative aspect-square flex flex-col justify-between p-7 rounded-2xl border border-zinc-700/80 bg-zinc-900/60 backdrop-blur-sm card-glow transition-all duration-300 hover:border-orange-500/40"
-            >
-              {/* Top: icon + link */}
-              <div className="flex items-start justify-between">
-                <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300 group-hover:bg-orange-500/24 transition-colors duration-200">
-                  {project.icon}
+        {/* Tabbed Interface */}
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Tab List - Vertical on desktop */}
+          <div className="md:w-64 flex-shrink-0">
+            <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0">
+              {tabs.map(({ id, label, icon: Icon }) => (
+                <button
+                  key={id}
+                  onClick={() => setActiveTab(id)}
+                  className={`flex items-center px-4 py-3 rounded-lg text-left transition-all duration-200 whitespace-nowrap ${
+                    activeTab === id
+                      ? "bg-orange-500/15 border-l-4 border-orange-500 text-orange-600 font-semibold"
+                      : "text-orange-600 hover:bg-orange-500/5 border-l-4 border-transparent hover:border-orange-500/30"
+                  }`}
+                >
+                  {Icon ? <Icon size={18} className="flex-shrink-0 mr-3" /> : null}
+                  <span className="text-sm">{label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Tab Content */}
+          <div className="flex-1 min-w-0">
+
+            {/* Bloomberg Tab */}
+            {activeTab === "bloomberg" && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="p-8 rounded-2xl border border-zinc-700/80 bg-zinc-800/90 backdrop-blur-sm"
+              >
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300">
+                    <TrendingUp size={28} />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-orange-600 mb-1">Software Engineer</h3>
+                    <a
+                      href="https://www.bloomberg.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-lg text-orange-600 hover:text-orange-400 transition-colors"
+                    >
+                      Bloomberg
+                      <ExternalLink size={16} />
+                    </a>
+                  </div>
                 </div>
-                {project.link && (
-                  <a
-                    href={project.link}
-                    className="p-2 text-zinc-300 hover:text-orange-300 transition-colors"
-                  >
-                    <ExternalLink size={18} />
-                  </a>
-                )}
-              </div>
+                <p className="text-sm text-orange-600 mb-2">May 2025 - Present</p>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-start gap-3">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-orange-500 flex-shrink-0" />
+                    <p className="text-orange-600 leading-relaxed">
+                      Maintained low-latency, high-throughput C++ data service for pricing data averaging 30 million requests/day.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-orange-500 flex-shrink-0" />
+                    <p className="text-orange-600 leading-relaxed">
+                      Built internal tooling to visualize data source logic, reducing cross-team research time. 
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {["C++", "Low-Latency", "High-Throughput", "React", "Distributed Systems", "Finance"].map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-xs px-3 py-1 rounded-full border border-orange-500/20 text-orange-300 bg-orange-500/10"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            )}
 
-              {/* Middle: content */}
-              <div className="flex-1 flex flex-col justify-center py-4">
-                <h3 className="text-xl font-semibold mb-3 text-orange-600 group-hover:text-orange-300 transition-colors duration-200">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-orange-600 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
+            {/* Caltech Tab */}
+            {activeTab === "caltech" && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="p-8 rounded-2xl border border-zinc-700/80 bg-zinc-800/90 backdrop-blur-sm"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300">
+                    <FlaskConical size={24} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-orange-600">Research</h3>
+                </div>
+                <div className="space-y-6">
+                  {researchItems.map((item, i) => (
+                    <div key={i} className="group pb-6 border-b border-zinc-700/50 last:border-0 last:pb-0">
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <h4 className="text-base font-semibold text-orange-600 group-hover:text-orange-400 transition-colors">
+                          {item.title}
+                        </h4>
+                        {item.link && (
+                          <a
+                            href={item.link}
+                            className="text-orange-600 hover:text-orange-400 transition-colors flex-shrink-0"
+                          >
+                            <ExternalLink size={16} />
+                          </a>
+                        )}
+                      </div>
+                      <p className="text-sm text-orange-600 leading-relaxed mb-3">
+                        {item.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {item.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className={`text-xs px-2 py-1 rounded-full border ${getTagColor(tag)}`}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
 
-              {/* Bottom: tags */}
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className={`text-xs px-2.5 py-1 rounded-full border ${getTagColor(tag)}`}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            {/* Hackathons Tab */}
+            {activeTab === "new relic" && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="p-8 rounded-2xl border border-zinc-700/80 bg-zinc-800/90 backdrop-blur-sm"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300">
+                    <Trophy size={24} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-orange-600">Hackathon Wins</h3>
+                </div>
+                <div className="space-y-6">
+                  {hackathonWins.map((win, i) => (
+                    <div key={i} className="group pb-6 border-b border-zinc-700/50 last:border-0 last:pb-0">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1">
+                          <h4 className="text-base font-semibold text-orange-600 group-hover:text-orange-400 transition-colors mb-1">
+                            {win.title}
+                          </h4>
+                          <p className="text-sm text-orange-600">
+                            {win.award} • {win.year}
+                          </p>
+                        </div>
+                        {win.link && (
+                          <a
+                            href={win.link}
+                            className="text-orange-600 hover:text-orange-400 transition-colors flex-shrink-0"
+                          >
+                            <ExternalLink size={16} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
 
-              {/* Hover gradient overlay */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/[0.02] group-hover:to-orange-500/[0.06] transition-all duration-500 pointer-events-none" />
-            </motion.div>
-          ))}
+            {/* Projects Tab */}
+            {activeTab === "tutoring" && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="p-8 rounded-2xl border border-zinc-700/80 bg-zinc-800/90 backdrop-blur-sm"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300">
+                    <Folder size={24} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-orange-600">Personal Projects</h3>
+                </div>
+                <div className="space-y-6">
+                  {personalProjects.map((project, i) => (
+                    <div key={i} className="group pb-6 border-b border-zinc-700/50 last:border-0 last:pb-0">
+                      <div className="flex items-start justify-between mb-3">
+                        <h4 className="text-base font-semibold text-orange-600 group-hover:text-orange-400 transition-colors">
+                          {project.title}
+                        </h4>
+                        {project.link && (
+                          <a
+                            href={project.link}
+                            className="text-orange-600 hover:text-orange-400 transition-colors flex-shrink-0"
+                          >
+                            <ExternalLink size={16} />
+                          </a>
+                        )}
+                      </div>
+                      <p className="text-sm text-orange-600 leading-relaxed mb-3">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className={`text-xs px-2 py-1 rounded-full border ${getTagColor(tag)}`}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Blog Tab */}
+            {activeTab === "blog" && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="p-8 rounded-2xl border border-zinc-700/80 bg-zinc-800/90 backdrop-blur-sm"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300">
+                    <BookOpen size={24} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-orange-600">Writing & Blog</h3>
+                </div>
+                <div className="space-y-6">
+                  {blogPosts.map((post, i) => (
+                    <div key={i} className="group pb-6 border-b border-zinc-700/50 last:border-0 last:pb-0">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <h4 className="text-base font-semibold text-orange-600 group-hover:text-orange-400 transition-colors mb-1">
+                            {post.title}
+                          </h4>
+                          <p className="text-xs text-orange-600 mb-2">{post.date}</p>
+                          <p className="text-sm text-orange-600 leading-relaxed">
+                            {post.excerpt}
+                          </p>
+                        </div>
+                        {post.link && (
+                          <a
+                            href={post.link}
+                            className="text-orange-600 hover:text-orange-400 transition-colors flex-shrink-0"
+                          >
+                            <ExternalLink size={16} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </div>
         </div>
       </div>
     </section>

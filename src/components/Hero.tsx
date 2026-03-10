@@ -43,12 +43,10 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="text-lg md:text-xl text-orange-600 max-w-2xl mx-auto mb-8 leading-relaxed"
         >
-          <span className="text-xl md:text-2xl font-semibold text-yellow-900">Software Engineer @ Bloomberg</span>
+          <span className="text-2xl md:text-3xl font-semibold">I build high-performance systems and</span>
           <br />
-          <span className="text-xl md:text-2xl font-semibold text-yellow-900">Georgia Tech CS Alum</span>
+          <span className="text-2xl md:text-3xl font-semibold">create tools for taste-oriented tasks.</span>
           <br />
-          <br />
-          <span className="text-lg md:text-xl font-semibold">I build high-performance systems and create tools for taste-oriented tasks.</span>
         </motion.p>
 
         <motion.div
