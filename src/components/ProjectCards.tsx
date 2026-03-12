@@ -2,20 +2,13 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, TrendingUp, FlaskConical, Trophy, Folder, BookOpen } from "lucide-react";
+import { ExternalLink, TrendingUp, FlaskConical, Folder, BookOpen } from "lucide-react";
 
 interface ResearchItem {
   title: string;
   description: string;
   link?: string;
   tags: string[];
-}
-
-interface HackathonWin {
-  title: string;
-  award: string;
-  year: string;
-  link?: string;
 }
 
 interface PersonalProject {
@@ -32,33 +25,56 @@ interface BlogPost {
   link?: string;
 }
 
-const researchItems: ResearchItem[] = [
+const bloombergItems: ResearchItem[] = [
   {
-    title: "Research Project Title",
-    description: "Brief description of your research work, methodology, and findings.",
-    link: "#",
-    tags: ["ML", "NLP"],
+    title: "Pricing Data Service",
+    description: "Maintained low-latency, high-throughput C++ data service for pricing data averaging 30 million requests/day.",
+    link: "https://www.bloomberg.com",
+    tags: ["C++", "Low-Latency", "High-Throughput", "Distributed Systems", "Finance"],
   },
   {
-    title: "Another Research Project",
-    description: "Description of another research project or publication.",
-    link: "#",
-    tags: ["HCI", "Published"],
+    title: "Internal Visualization Tooling",
+    description: "Built internal tooling to visualize data source logic, reducing cross-team research time.",
+    link: "https://www.bloomberg.com",
+    tags: ["React", "TypeScript", "Data Visualization"],
   },
 ];
 
-const hackathonWins: HackathonWin[] = [
+const caltechItems: ResearchItem[] = [
   {
-    title: "Hackathon Name",
-    award: "1st Place",
-    year: "2024",
-    link: "#",
+    title: "Two-Axle Car Simulator",
+    description: "Created two-axle car simulator in C++ and ROS 2 (Robot Operating Software 2).",
+    link: "https://aerospacerobotics.caltech.edu",
+    tags: ["C++", "ROS 2", "Robotics"],
   },
   {
-    title: "Another Hackathon",
-    award: "Best Technical Implementation",
-    year: "2023",
-    link: "#",
+    title: "Controller-to-Odometry Pipeline",
+    description: "Manipulated controller input into output odometry data to guide simulation toward goal.",
+    tags: ["Controls", "Simulation"],
+  },
+  {
+    title: "Publisher-Subscriber Architecture",
+    description: "Designed publisher-subscriber model to hand off data between controller and car.",
+    tags: ["ROS 2", "Systems Design"],
+  },
+  {
+    title: "Decoupled Timestep Optimization",
+    description: "Decoupled timesteps from runtime to speed up experiments.",
+    tags: ["Performance", "C++"],
+  },
+];
+
+const newRelicItems: ResearchItem[] = [
+  {
+    title: "Google One Tap Integration",
+    description: "Integrated Google One Tap functionality on New Relic Create Account Page to simplify account creation process.",
+    link: "https://newrelic.com",
+    tags: ["OAuth", "Frontend", "UX"],
+  },
+  {
+    title: "Google SSO Default Sign-Up",
+    description: "Reduced manual Gmail sign-ups by implementing Google Single Sign-On as default option on sign-up.",
+    tags: ["Authentication", "Frontend"],
   },
 ];
 
@@ -178,67 +194,14 @@ export default function ProjectCards() {
                 transition={{ duration: 0.3 }}
                 className="p-8 rounded-2xl border border-zinc-700/80 bg-zinc-800/90 backdrop-blur-sm"
               >
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300">
-                    <TrendingUp size={28} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-orange-600 mb-1">Software Engineer</h3>
-                    <a
-                      href="https://www.bloomberg.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-lg text-orange-600 hover:text-orange-400 transition-colors"
-                    >
-                      Bloomberg
-                      <ExternalLink size={16} />
-                    </a>
-                  </div>
-                </div>
-                <p className="text-sm text-orange-600 mb-2">May 2025 - Present</p>
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-start gap-3">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-orange-500 flex-shrink-0" />
-                    <p className="text-orange-600 leading-relaxed">
-                      Maintained low-latency, high-throughput C++ data service for pricing data averaging 30 million requests/day.
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-orange-500 flex-shrink-0" />
-                    <p className="text-orange-600 leading-relaxed">
-                      Built internal tooling to visualize data source logic, reducing cross-team research time. 
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {["C++", "Low-Latency", "High-Throughput", "React", "Distributed Systems", "Finance"].map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs px-3 py-1 rounded-full border border-orange-500/20 text-orange-300 bg-orange-500/10"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-
-            {/* Caltech Tab */}
-            {activeTab === "caltech" && (
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-                className="p-8 rounded-2xl border border-zinc-700/80 bg-zinc-800/90 backdrop-blur-sm"
-              >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300">
-                    <FlaskConical size={24} />
+                    <TrendingUp size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold text-orange-600">Research</h3>
+                  <h3 className="text-2xl font-bold text-orange-600">Bloomberg</h3>
                 </div>
                 <div className="space-y-6">
-                  {researchItems.map((item, i) => (
+                  {bloombergItems.map((item, i) => (
                     <div key={i} className="group pb-6 border-b border-zinc-700/50 last:border-0 last:pb-0">
                       <div className="flex items-start justify-between gap-2 mb-2">
                         <h4 className="text-base font-semibold text-orange-600 group-hover:text-orange-400 transition-colors">
@@ -272,7 +235,54 @@ export default function ProjectCards() {
               </motion.div>
             )}
 
-            {/* Hackathons Tab */}
+            {/* Caltech Tab */}
+            {activeTab === "caltech" && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="p-8 rounded-2xl border border-zinc-700/80 bg-zinc-800/90 backdrop-blur-sm"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300">
+                    <FlaskConical size={24} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-orange-600">Caltech</h3>
+                </div>
+                <div className="space-y-6">
+                  <div className="group pb-6 border-b border-zinc-700/50 last:border-0 last:pb-0">
+                    <div className="flex items-start justify-between gap-2 mb-3">
+                      <h4 className="text-base font-semibold text-orange-600 group-hover:text-orange-400 transition-colors">
+                        {caltechItems[0]?.title}
+                      </h4>
+                      {caltechItems[0]?.link && (
+                        <a
+                          href={caltechItems[0].link}
+                          className="text-orange-600 hover:text-orange-400 transition-colors flex-shrink-0"
+                        >
+                          <ExternalLink size={16} />
+                        </a>
+                      )}
+                    </div>
+                    <p className="text-sm text-orange-600 leading-relaxed mb-3">
+                      Built a car simulator that translates controller inputs into vehicle motion using a publisher–subscriber architecture.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {Array.from(new Set(caltechItems.flatMap((item) => item.tags))).map((tag) => (
+                        <span
+                          key={tag}
+                          className={`text-xs px-2 py-1 rounded-full border ${getTagColor(tag)}`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* New Relic Tab */}
             {activeTab === "new relic" && (
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -282,30 +292,38 @@ export default function ProjectCards() {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300">
-                    <Trophy size={24} />
+                    <TrendingUp size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold text-orange-600">Hackathon Wins</h3>
+                  <h3 className="text-2xl font-bold text-orange-600">New Relic</h3>
                 </div>
                 <div className="space-y-6">
-                  {hackathonWins.map((win, i) => (
+                  {newRelicItems.map((item, i) => (
                     <div key={i} className="group pb-6 border-b border-zinc-700/50 last:border-0 last:pb-0">
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="flex-1">
-                          <h4 className="text-base font-semibold text-orange-600 group-hover:text-orange-400 transition-colors mb-1">
-                            {win.title}
-                          </h4>
-                          <p className="text-sm text-orange-600">
-                            {win.award} • {win.year}
-                          </p>
-                        </div>
-                        {win.link && (
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <h4 className="text-base font-semibold text-orange-600 group-hover:text-orange-400 transition-colors">
+                          {item.title}
+                        </h4>
+                        {item.link && (
                           <a
-                            href={win.link}
+                            href={item.link}
                             className="text-orange-600 hover:text-orange-400 transition-colors flex-shrink-0"
                           >
                             <ExternalLink size={16} />
                           </a>
                         )}
+                      </div>
+                      <p className="text-sm text-orange-600 leading-relaxed mb-3">
+                        {item.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {item.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className={`text-xs px-2 py-1 rounded-full border ${getTagColor(tag)}`}
+                          >
+                            {tag}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   ))}
