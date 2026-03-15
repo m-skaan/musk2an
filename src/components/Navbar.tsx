@@ -23,7 +23,7 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         <a href="#" className="text-xl font-bold tracking-tight text-orange-600">
-          <span className="gradient-text">m.</span>
+          <span className="gradient-text">musk2an.com</span>
         </a>
 
         {/* Desktop */}

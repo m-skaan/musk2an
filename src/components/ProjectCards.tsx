@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, TrendingUp, FlaskConical, Folder, BookOpen } from "lucide-react";
+import { ExternalLink, TrendingUp, FlaskConical, Folder, BookOpen, ArrowDown } from "lucide-react";
 
 interface ResearchItem {
   title: string;
@@ -29,13 +29,11 @@ const bloombergItems: ResearchItem[] = [
   {
     title: "Pricing Data Service",
     description: "Maintained low-latency, high-throughput C++ data service for pricing data averaging 30 million requests/day.",
-    link: "https://www.bloomberg.com",
     tags: ["C++", "Low-Latency", "High-Throughput", "Distributed Systems", "Finance"],
   },
   {
     title: "Internal Visualization Tooling",
     description: "Built internal tooling to visualize data source logic, reducing cross-team research time.",
-    link: "https://www.bloomberg.com",
     tags: ["React", "TypeScript", "Data Visualization"],
   },
 ];
@@ -130,15 +128,15 @@ export default function ProjectCards() {
 
   const tabs = [
     { id: "bloomberg", label: "Bloomberg"},
-    { id: "caltech", label: "Caltech"},
     { id: "networking", label: "Networking Research"},
+    { id: "caltech", label: "Caltech"},
   ];
 
   return (
     <section id="projects" className="relative py-28 px-6">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-px orange-line" />
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto relative">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -150,9 +148,12 @@ export default function ProjectCards() {
           <p className="text-orange-600 font-mono text-sm tracking-widest uppercase mb-3">
             What I&apos;ve been up to
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Work <span className="gradient-text">Experience</span>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            <span className="text-zinc-950">Work Experience</span>
           </h2>
+          <p className="text-orange-600 text-lg max-w-2xl mx-auto">
+            Building <span className="font-semibold">low-latency</span>, <span className="font-semibold">high-throughput</span> systems and <span className="font-semibold">reliable</span> distributed <span className="font-semibold">infrastructure</span>.
+          </p>
         </motion.div>
 
         {/* Tabbed Interface */}
@@ -193,6 +194,14 @@ export default function ProjectCards() {
                     <TrendingUp size={24} />
                   </div>
                   <h3 className="text-2xl font-bold text-orange-600">Bloomberg</h3>
+                  <a
+                    href="https://www.bloomberg.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-orange-600 hover:text-orange-400 transition-colors ml-auto"
+                  >
+                    <ExternalLink size={20} />
+                  </a>
                 </div>
                 <div className="space-y-6">
                   {bloombergItems.map((item, i) => (
@@ -417,7 +426,25 @@ export default function ProjectCards() {
             )}
           </div>
         </div>
+
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8"
+      >
+        <a href="#skills" className="cursor-pointer">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <ArrowDown size={20} className="text-orange-600 hover:text-orange-400 transition-colors" />
+          </motion.div>
+        </a>
+      </motion.div>
     </section>
   );
 }

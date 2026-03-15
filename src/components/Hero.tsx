@@ -53,19 +53,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="flex items-center justify-center gap-4 mb-12"
+          className="flex items-center justify-center mb-12"
         >
           <a
             href="#projects"
             className="px-6 py-3 rounded-full bg-orange-500 text-zinc-950 font-semibold text-sm hover:bg-orange-400 transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/25"
           >
             View My Work
-          </a>
-          <a
-            href="#contact"
-            className="px-6 py-3 rounded-full border border-zinc-500 text-orange-600 font-semibold text-sm hover:border-orange-500/70 hover:text-orange-300 transition-all duration-200"
-          >
-            Say Hello
           </a>
         </motion.div>
 
@@ -101,12 +95,14 @@ export default function Hero() {
         transition={{ delay: 1.5 }}
         className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 md:bottom-8"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ArrowDown size={20} className="text-orange-600" />
-        </motion.div>
+        <a href="#projects" className="cursor-pointer">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <ArrowDown size={20} className="text-orange-600 hover:text-orange-400 transition-colors" />
+          </motion.div>
+        </a>
       </motion.div>
     </section>
   );
