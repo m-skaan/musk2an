@@ -137,7 +137,6 @@ export default function ProjectCards() {
     { id: "bloomberg", label: "Bloomberg"},
     { id: "caltech", label: "Caltech"},
     { id: "new relic", label: "New Relic"},
-    { id: "tutoring", label: "Tutoring"},
   ];
 
   return (
