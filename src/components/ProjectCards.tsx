@@ -64,17 +64,12 @@ const caltechItems: ResearchItem[] = [
   },
 ];
 
-const newRelicItems: ResearchItem[] = [
+const networkingResearchItems: ResearchItem[] = [
   {
-    title: "Google One Tap Integration",
-    description: "Integrated Google One Tap functionality on New Relic Create Account Page to simplify account creation process.",
-    link: "https://newrelic.com",
-    tags: ["OAuth", "Frontend", "UX"],
-  },
-  {
-    title: "Google SSO Default Sign-Up",
-    description: "Reduced manual Gmail sign-ups by implementing Google Single Sign-On as default option on sign-up.",
-    tags: ["Authentication", "Frontend"],
+    title: "Assessing LEO Satellite Networks for National Emergency Failover",
+    description: "Analyzed Starlink reliability using Hypatia simulator for Low-Earth Orbiting satellite networks. Published at ACM Internet Measurement Conference 2025.",
+    link: "https://doi.org/10.1145/3730567.3764482",
+    tags: ["Networks", "Simulation", "Published", "ACM"],
   },
 ];
 
@@ -136,7 +131,7 @@ export default function ProjectCards() {
   const tabs = [
     { id: "bloomberg", label: "Bloomberg"},
     { id: "caltech", label: "Caltech"},
-    { id: "new relic", label: "New Relic"},
+    { id: "networking", label: "Networking Research"},
   ];
 
   return (
@@ -281,8 +276,8 @@ export default function ProjectCards() {
               </motion.div>
             )}
 
-            {/* New Relic Tab */}
-            {activeTab === "new relic" && (
+            {/* Networking Research Tab */}
+            {activeTab === "networking" && (
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -293,10 +288,10 @@ export default function ProjectCards() {
                   <div className="p-3 rounded-xl bg-orange-500/12 text-orange-300">
                     <TrendingUp size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold text-orange-600">New Relic</h3>
+                  <h3 className="text-2xl font-bold text-orange-600">Networking Research</h3>
                 </div>
                 <div className="space-y-6">
-                  {newRelicItems.map((item, i) => (
+                  {networkingResearchItems.map((item, i) => (
                     <div key={i} className="group pb-6 border-b border-zinc-700/50 last:border-0 last:pb-0">
                       <div className="flex items-start justify-between gap-2 mb-2">
                         <h4 className="text-base font-semibold text-orange-600 group-hover:text-orange-400 transition-colors">

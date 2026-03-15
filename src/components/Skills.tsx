@@ -9,7 +9,7 @@ const skillCategories = [
   },
   {
     title: "Frontend",
-    skills: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Svelte"],
+    skills: ["React", "Next.js", "Tailwind CSS"],
   },
   {
     title: "Backend & Infra",
@@ -50,7 +50,7 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-6 rounded-2xl border border-zinc-700/80 bg-zinc-900/55 hover:border-orange-500/35 transition-all duration-300"
+              className="p-6 rounded-2xl border border-zinc-700/80 bg-zinc-800/90 hover:border-orange-500/35 transition-all duration-300"
             >
               <h3 className="text-sm font-semibold text-orange-300 uppercase tracking-wider mb-4">
                 {cat.title}
