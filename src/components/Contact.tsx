@@ -50,7 +50,7 @@ export default function Contact() {
         >
           {[
             { icon: Github, href: "https://github.com/m-skaan", label: "GitHub" },
-            { icon: Linkedin, href: "https://linkedin.com/mskaan", label: "LinkedIn" },
+            { icon: Linkedin, href: "https://linkedin.com/in/mskaan", label: "LinkedIn" },
             { icon: Twitter, href: "https://twitter.com/musk2an", label: "Twitter" },
           ].map(({ icon: Icon, href, label }) => (
             <a

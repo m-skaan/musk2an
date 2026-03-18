@@ -6,7 +6,7 @@ import { ArrowDown } from "lucide-react";
 const skillCategories = [
   {
     title: "Languages",
-    skills: ["TypeScript", "Python", "Rust", "Go", "Java", "C++"],
+    skills: ["C++", "Python", "Java", "JavaScript", "TypeScript"],
   },
   {
     title: "Frontend",
@@ -14,11 +14,11 @@ const skillCategories = [
   },
   {
     title: "Backend & Infra",
-    skills: ["Node.js", "PostgreSQL", "Redis", "Docker", "AWS", "GCP"],
+    skills: ["Node.js", "Docker", "GCP"],
   },
   {
     title: "AI / ML",
-    skills: ["PyTorch", "TensorFlow", "Hugging Face", "LangChain", "OpenAI"],
+    skills: ["Claude Code/Github Copilot", "TensorFlow", "Deep Learning"],
   },
 ];
 
