@@ -6,7 +6,8 @@ import { useState } from "react";
 
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
+  { label: "Work", href: "#projects" },
+  { label: "Projects", href: "#personal-projects" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
@@ -38,14 +39,6 @@ export default function Navbar() {
               </a>
             </li>
           ))}
-          <li>
-            <a
-              href="#contact"
-              className="text-sm px-4 py-2 rounded-full bg-orange-500/12 text-orange-600 border border-orange-500/35 hover:bg-orange-500/22 transition-all duration-200"
-            >
-              Get in Touch
-            </a>
-          </li>
         </ul>
 
         {/* Mobile toggle */}
