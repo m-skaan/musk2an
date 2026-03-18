@@ -127,9 +127,9 @@ export default function ProjectCards() {
   const [activeTab, setActiveTab] = useState("bloomberg");
 
   const tabs = [
-    { id: "bloomberg", label: "Bloomberg"},
-    { id: "networking", label: "Networking Research"},
-    { id: "caltech", label: "Caltech"},
+    { id: "bloomberg", label: "Bloomberg", icon: TrendingUp },
+    { id: "networking", label: "Networking Research", icon: FlaskConical },
+    { id: "caltech", label: "Caltech", icon: Folder },
   ];
 
   return (
