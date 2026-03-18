@@ -436,7 +436,7 @@ export default function ProjectCards() {
         transition={{ delay: 0.5 }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8"
       >
-        <a href="#skills" className="cursor-pointer">
+        <a href="#personal-projects" className="cursor-pointer">
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
